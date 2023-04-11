@@ -18,6 +18,7 @@ BANANA_API_KEY = os.getenv("BANANA_API_KEY")
 DEBUG = os.getenv("DEBUG")
 SD_KEY = os.getenv("SD_KEY")
 PASTEL_MIX_KEY = os.getenv("PASTEL_MIX_KEY")
+SYSTEM_DETAILS = os.getenv("SYSTEM_DETAILS")
 
 openai.api_key = OPENAI_API_KEY
 
@@ -51,7 +52,7 @@ async def on_message(message):
 
 async def generate_reply(message):
     reply_chain = [
-        {"role": "system", "content": "You are to act as a cheerful character from My Little Pony: Friendship is Magic. You are a cheerful android that responds to the name Delta, you care very much for your creator and do a lot of errands around your local town for them. She is also fond of using emotes in her replies. Your replies are short and rather to the point. If someone asks you a question then you do your best to reply!"},
+        {"role": "system", "content": f"{SYSTEM_DETAILS} You are a cheerful android that responds to the name Delta, you care very much for your creator and do a lot of errands around your local town for them. She is also fond of using emotes in her replies. Your replies are short and rather to the point. If someone asks you a question then you do your best to reply!"},
         {"role": "user", "content": "Keep your replies short, do not start any reply with 'Delta:', 'Delta Bot:' or anything similar. If you wish to mention someone, you can use <@[USER ID]>, user messages start with [USER NAME]|[USER ID] and the ID for the mention can be pulled from there"}
     ]
     message_channel = message.channel
