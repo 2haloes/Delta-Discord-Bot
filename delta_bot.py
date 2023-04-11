@@ -19,6 +19,7 @@ DEBUG = os.getenv("DEBUG")
 SD_KEY = os.getenv("SD_KEY")
 PASTEL_MIX_KEY = os.getenv("PASTEL_MIX_KEY")
 SYSTEM_DETAILS = os.getenv("SYSTEM_DETAILS")
+USER_ID = os.getenv("USER_ID")
 
 openai.api_key = OPENAI_API_KEY
 
@@ -32,7 +33,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if DEBUG != "1" or message.author.id == 228941994259513344:
+    if DEBUG != "1" or str(message.author.id) == USER_ID:
         if message.author == bot.user:
             return
 
